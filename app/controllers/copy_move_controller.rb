@@ -2,7 +2,7 @@ class CopyMoveController < ApplicationController
 
   before_filter :find_page
 
-  def index 
+  def index
   end
 
   def copy_move
@@ -19,6 +19,10 @@ class CopyMoveController < ApplicationController
         @new_page = duplicate_page(@page, @new_parent)
         duplicate_children(@page, @new_page, true)
         flash[:notice] = 'Entire page tree has been duplicated correctly.'
+      when 'tree_children'
+        @new_page = @new_parent
+        duplicate_children(@page, @new_page, true)
+        flash[:notice] = 'Child page tree (only) has been duplicated correctly.' 
       when 'move'
         if @page.parent.nil?
           flash.now[:error] = "You can't move the homepage under another parent."

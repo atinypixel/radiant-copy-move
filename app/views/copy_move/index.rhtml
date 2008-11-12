@@ -5,6 +5,7 @@
 		<input type="radio" name="copy_move_action" id="copy_move_action_page" value="page" checked="checked" /><label for="copy_move_action_page"> Copy only '<strong><%= @page.title %></strong>' page. </label><br />
 		<input type="radio" name="copy_move_action" id="copy_move_action_children" value="children" /> <label for="copy_move_action_children">Copy '<strong><%= @page.title %></strong>' and its first-level children. </label><br />
 		<input type="radio" name="copy_move_action" id="copy_move_action_tree" value="tree" /><label for="copy_move_action_tree"> Copy '<strong><%= @page.title %></strong>' and all of its children. </label><br />
+		<input type="radio" <%= !@page.parent ? "" : disabled="disabled" %> name="copy_move_action" id="copy_move_action_tree_children" value="tree_children" /><label for="copy_move_action_tree_children"> Copy only children.</label><br />
 		<input type="radio" <%= @page.parent ? "" : disabled="disabled" %> name="copy_move_action" id="copy_move_action_move" value="move" /><label for="copy_move_action_move"> Only move page. </label><br /><br />
 		<p><strong>Copy or move under</strong></p>
 		<%= page_parent_select_tag %>      
